@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lieferando</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+    <link rel="icon" href="icons8-lieferservice-50.png" type="image/x-icon">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="Lieferando LOGO.png" alt="Logo">
+            </div>
+            <ul>
+                <li><a href="#">SPEISEKARTE</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="header-image">
+            <img src="pizza-3000271_1280.jpg" alt="Pizza">
+        </div>
+        <div id="cart" class="cart">
+            <p>Fülle deinen Warenkorb</p>
+            <ul id="cartItems"></ul>
+            <p id="cartTotal">Gesamt: 0.00 €</p>
+            <button id="checkoutButton">Bezahlen</button>
+        </div>
+    </div>
+    <main>
+        <section class="restaurant-info">
+            <div class="info">
+                <div class="img-container">
+                    <img src="iconslogo.png" alt="Restaurant Logo">
+                </div>
+                <h1>Discount Pizzeria</h1>
+                <div class="rating">
+                    <span>4.6⭐</span>
+                    <a href="#">(10)</a>
+                </div>
+                <div class="delivery-info">
+                    <span>Min. 15,00 €</span>
+                    <span>🚴‍♂️ ab 3,90 €</span>
+                </div>
+                <div class="offers">
+                    <p>💸 Genießen Sie 10 % Rabatt auf alle Pizzen täglich von 11 bis 12 Uhr.</p>
+                </div>
+                <button>Stempelkarten</button>
+            </div>
+            <div class="order-info">
+                <button>Lieferung<br>20-45 min</button>
+                <button>Abholung<br>13 min</button>
+            </div>
+        </section>
+        <section class="menu">
+            <div class="categories">
+                <button class="highlight" onclick="scrollToSection('pizzaSection')">
+                    <span>❤</span>Beliebt
+                </button>
+                <button onclick="scrollToSection('appetizersSection')">Vorspeisen</button>
+                <button onclick="scrollToSection('soupsSection')">Suppen</button>
+                <button onclick="scrollToSection('pastaSection')">Pasta</button>
+                <button onclick="scrollToSection('saladsSection')">Salate</button>
+                <button onclick="scrollToSection('fishSection')">Fisch</button>
+                <button onclick="scrollToSection('meatSection')">Fleisch</button>
+                <button onclick="scrollToSection('dessertsSection')">Desserts</button>
+                <button onclick="scrollToSection('drinksSection')">Getränke</button>
+            </div>
+            <div class="items-container">
+                <div class="items" id="menuDisplay">
+                    <!-- Dynamically generated menu items will be inserted here -->
+                </div>
+            </div>
+        </section>
+        <div id="extraOptions" class="extra-options" style="display: none;">
+            <h3>Extras</h3>
+            <div class="extras-list">
+                <label><input type="checkbox" value="Zwiebel"> Zwiebel (+1.50€)</label>
+                <label><input type="checkbox" value="Thunfisch"> Thunfisch (+1.50€)</label>
+                <label><input type="checkbox" value="Pilze"> Pilze (+1.50€)</label>
+                <label><input type="checkbox" value="Paprika"> Paprika (+1.50€)</label>
+                <label><input type="checkbox" value="Oliven"> Oliven (+1.50€)</label>
+                <label><input type="checkbox" value="Peperoni"> Peperoni (+1.50€)</label>
+                <label><input type="checkbox" value="Mozzarella"> Mozzarella (+2.00€)</label>
+                <label><input type="checkbox" value="Parmesan"> Parmesan (+2.00€)</label>
+                <label><input type="checkbox" value="Prosciutto"> Prosciutto (+1.50€)</label>
+                <label><input type="checkbox" value="Salami"> Salami (+1.50€)</label>
+                <label><input type="checkbox" value="Schinken"> Schinken (+1.50€)</label>
+                <label><input type="checkbox" value="Ananas"> Ananas (+1.50€)</label>
+                <label><input type="checkbox" value="Artischocken"> Artischocken (+1.50€)</label>
+                <label><input type="checkbox" value="Kapern"> Kapern (+1.50€)</label>
+                <label><input type="checkbox" value="Sardellen"> Sardellen (+1.50€)</label>
+                <label><input type="checkbox" value="Spinat"> Spinat (+1.50€)</label>
+                <label><input type="checkbox" value="Rucola"> Rucola (+1.50€)</label>
+                <label><input type="checkbox" value="Gorgonzola"> Gorgonzola (+2.00€)</label>
+                <label><input type="checkbox" value="Ricotta"> Ricotta (+2.00€)</label>
+                <label><input type="checkbox" value="Aubergine"> Aubergine (+1.50€)</label>
+                <label><input type="checkbox" value="Zucchini"> Zucchini (+1.50€)</label>
+                <label><input type="checkbox" value="Pesto"> Pesto (+1.50€)</label>
+                <label><input type="checkbox" value="Basilikum"> Basilikum (+1.50€)</label>
+                <label><input type="checkbox" value="Rosmarin"> Rosmarin (+1.50€)</label>
+                <label><input type="checkbox" value="Thymian"> Thymian (+1.50€)</label>
+                <label><input type="checkbox" value="Knoblauch"> Knoblauch (+1.50€)</label>
+                <label><input type="checkbox" value="Chili"> Chili (+1.50€)</label>
+                <label><input type="checkbox" value="Rote Zwiebeln"> Rote Zwiebeln (+1.50€)</label>
+                <label><input type="checkbox" value="Mais"> Mais (+1.50€)</label>
+                <label><input type="checkbox" value="Eier"> Eier (+1.50€)</label>
+            </div>
+            <button id="addExtrasButton">Extras hinzufügen</button>
+        </div>
+    </main>
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <h2>Weitere Produktinformationen</h2>
+            <p>Allergene</p>
+            <ul>
+                <li>Enthält glutenhaltige/s Getreide/-Erzeugnisse</li>
+                <li>Weizen</li>
+                <li>Enthält Milch/-Erzeugnisse (laktosehaltig)</li>
+            </ul>
+            <p>Diese Angaben zu Allergenen wurden vom Restaurant bestätigt.</p>
+            <p><a href="#">Rechtliche Bedenken melden</a></p>
+            <p>Wir stellen dir stets relevante Informationen zur Verfügung, die wir von unseren Partnern über deren
+                Produkte erhalten. In einigen Fällen können die angezeigten Informationen jedoch unvollständig,
+                automatisch generiert und/oder noch nicht von Discount Pizzeria validiert worden sein. Bitte wende dich
+                über dieses Formular an unseren Kundenservice, wenn du Allergien, Unverträglichkeiten oder Fragen zu
+                bestimmten Artikeln hast.</p>
+        </div>
+    </div>
+</body>
+
+</html>
